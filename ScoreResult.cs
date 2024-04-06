@@ -18,15 +18,17 @@ public class ScoreResult : MonoBehaviour
     }
 
     //スコアをカウントアップしていきながら表示、DOCounter(開始値、終了値、遷移時間、カンマの有無).SetEase(Ease.遷移の様子)
-    public void CountUp(int resultscore)
+    public void CountUp(int score)
     {
+        float resultscore = (float)score / 10f;
+
         if (resultscore > 999999)  //何かしらの理由で値がカンスト値を超えていた場合999999を表示
         {
-            ResultText.DOCounter(0, 999999, animationduration, false).SetEase(Ease.OutCubic); //outcubicは(t - 1)^3 + 1(0<=t<=1)
+            DOVirtual.Float(0f, 999999f, animationduration, updatingscore => { ResultText.text = updatingscore.ToString("F1"); }).SetEase(Ease.OutCubic); //outcubicは(t - 1)^3 + 1(0<=t<=1)
         }
         else
         {
-            ResultText.DOCounter(0, resultscore, animationduration / 2, false).SetEase(Ease.OutCubic);
+            DOVirtual.Float(0f, resultscore, animationduration / 2, updatingscore => {ResultText.text = updatingscore.ToString("F1");}).SetEase(Ease.OutCubic);
         }
 
         ResultText.DOColor(new Color(1f, 1f, 0), animationduration).SetEase(Ease.Linear).OnComplete(() => {

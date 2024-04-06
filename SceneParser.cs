@@ -8,10 +8,13 @@ public class SceneParser
     private const string SEPARATE_LINE ="#";
     private const string COMMAND_SPEAKER ="speaker=";
     private const string COMMAND_OPTION = "options=";
+    private const string BOKEFLAG = "bokeflag=";
     private const string COMMAND_NEXT = "next=";
     private const string COMMAND_SE = "se=";
     private const string COMMAND_SCORE = "score=";
     private const string COMMAND_BACKGROUND = "background=";
+    private const string COMMAND_BGM = "bgm=";
+    private const string COMMAND_CHARA = "chara=";
     private const string SEPARATE_MAIN_START = "{";
     private const string SEPARATE_MAIN_END = "}";
     private const string SECTION_RESULT = "result";
@@ -60,6 +63,12 @@ public class SceneParser
                         }
                     }
                 }
+                else if (line.Contains(BOKEFLAG))
+                {
+                    line = line.Replace(BOKEFLAG, "");
+                    line = line.Replace("\n", "").Replace("\r", "");
+                    sc.SetBokeflag(line);
+                }
                 else if (line.Contains(COMMAND_NEXT))
                 {
                     line = line.Replace(COMMAND_NEXT, "");
@@ -71,12 +80,25 @@ public class SceneParser
                     line = line.Replace("\n","").Replace("\r","");
                     sc.SetSE(line);
                 }
+                else if (line.Contains(COMMAND_BGM))
+                {
+                    line = line.Replace(COMMAND_BGM,"");
+                    line = line.Replace("\n", "").Replace("\r", "");
+                    sc.SetBGM(line);
+                }
                 else if (line.Contains(COMMAND_BACKGROUND))
                 {
                     line = line.Replace(COMMAND_BACKGROUND,"");
                     line = line.Replace("\n","").Replace("\r","");
                     Debug.Log(line);
                     sc.SetBG(line);
+                }
+                else if (line.Contains(COMMAND_CHARA))
+                {
+                    line = line.Replace(COMMAND_CHARA, "");
+                    line = line.Replace("\n", "").Replace("\r", "");
+                    Debug.Log(line);
+                    sc.SetChara(line);
                 }
                 else if (line.Contains(COMMAND_SCORE))
                 {

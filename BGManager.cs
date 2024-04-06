@@ -9,41 +9,40 @@ using System.Text;
 public class BGManager : MonoBehaviour
 {
 
+    public Image bgImage;
+
     [SerializeField]
-    private Sprite[] bgimages; //画像のリスト
+    Sprite school1, school2,amusement;
 
-    private string[] bgnames = new string[] {"学校背景"}; //音源の変数名が入ったリスト
-
-    Dictionary<string,Sprite> BGDictionary;  //SEのキーと音源を対応させた辞書型配列
-
-
-
-
-    // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
-        BGDictionary = new Dictionary<string,Sprite>(); //初期化
-
-        //２つのリストから辞書を作成
-        if (bgimages.Length != bgnames.Length)
-        {
-            Debug.LogError("Error: Number of audioclips and AudioClipname don't match.");
-            return;
-        }
-
-        for (int i = 0; i < bgimages.Length; i++)
-        {
-           BGDictionary.Add(bgnames[i], bgimages[i]);
-        }
-
-
+        bgImage.color = new Color32(255, 255, 255, 255);
     }
 
-    //指定された音を鳴らす,写真の名前を受け取りそれに対応する写真を探し返す
-    public Sprite Set(string bgname)
+    public void BackGroundChange(string image_name)
     {
-        Sprite BGImage = BGDictionary[bgname]; //指定されたキーに対応する画像
-
-        return BGImage;
+        bgImage.enabled = true;
+        if (image_name == "normal_school")
+        {
+            bgImage.sprite = school1;
+        }
+        else if (image_name == "dark_school")
+        {
+            bgImage.sprite = school2;
+            bgImage.color = new Color32(206, 0, 0, 255);
+        }
+        else if (image_name == "amusement")
+        {
+            bgImage.sprite = amusement;
+        }
+        else if (image_name == "dark_amusement")
+        {
+            bgImage.sprite = amusement;
+            bgImage.color = new Color32(206, 0, 0, 255);
+        }
+        else
+        {
+            bgImage.enabled = false;
+        }
     }
 }

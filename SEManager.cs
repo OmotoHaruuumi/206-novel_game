@@ -11,7 +11,7 @@ public class SEManager : MonoBehaviour
     [SerializeField]
     private AudioClip[] audioclips; //音源のリスト
 
-    private string[] AudioClipname = new string[] {"laugh"}; //音源の変数名が入ったリスト
+    private string[] AudioClipname = new string[] {"laugh","shock","click","bokeru"}; //音源の変数名が入ったリスト
 
     Dictionary<string, AudioClip> audioClipDictionary;  //SEのキーと音源を対応させた辞書型配列
 
@@ -21,7 +21,7 @@ public class SEManager : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        audiosource = GameObject.FindObjectOfType<AudioSource>();
+        audiosource = GetComponent<AudioSource>();
         audioClipDictionary = new Dictionary<string, AudioClip>(); //初期化
 
         //２つのリストから辞書を作成
@@ -54,4 +54,5 @@ public class SEManager : MonoBehaviour
             Debug.Log("オーディオソースが設定されていません");
         }
     }
+
 }

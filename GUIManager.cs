@@ -15,6 +15,13 @@ public class GUIManager : MonoBehaviour
     public Image BackgroundImage; //背景画像
     [SerializeField]
     public Button OptionButton;
+    [SerializeField]
+    public GameObject BokeruButton;
+    [SerializeField]
+    public GameObject FakeButton;
+    [SerializeField]
+    public Font normalFont;  //使用するフォント
+
 
     public Transform ButtonPanel;
 

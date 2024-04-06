@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public SceneController sc;
+    private string senario;
 
     // Start is called before the first frame update
     void Start()
     {
         sc = new SceneController(this);
-        SetFirstScene();
+        senario = TitleManager.senario;
+        SetFirstScene(senario);
        
     }
 
@@ -22,8 +24,13 @@ public class GameManager : MonoBehaviour
         sc.SetComponents();
     }
 
-    void SetFirstScene()
+    void SetFirstScene(string senario)
     {
+        if (senario == null)
+        {
+            senario = "senario2";
+        }
+        sc.LoadSenario(senario);
         sc.SetScene("001");
     }
 

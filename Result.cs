@@ -12,6 +12,11 @@ public class Result : MonoBehaviour
 
     private ScoreResult scoreresult;
 
+    private AudioSource audioSource = null;
+
+    [SerializeField]
+    public AudioClip resultSE,Click;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,17 +26,42 @@ public class Result : MonoBehaviour
             Debug.Log("None");
         score =  SceneController.getscore();
         scoreresult.CountUp(score);
+        audioSource = GetComponent<AudioSource>();
+        PlaySE(resultSE);
     }
 
 
-    //クリックされた時の動作
+    //リスタートがクリックされた時の動作
     public void ReStart()
     {
-        StartCoroutine(ReStartWithDelay());
+        StartCoroutine(ReStartWithDelay("SampleScene"));
     }
-    private IEnumerator ReStartWithDelay()
+
+    //タイトルに戻るがクリックされた時の動作
+    public void BackTitle()
     {
-        yield return new WaitForSeconds(scenechangedelay); // delay秒待つ
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(ReStartWithDelay("Title"));
     }
+
+    private IEnumerator ReStartWithDelay(string changescene)
+    {
+        PlaySE(Click);
+        yield return new WaitForSeconds(scenechangedelay); // delay秒待つ
+        SceneManager.LoadScene(changescene);
+    }
+
+
+
+    public void PlaySE(AudioClip clip)
+    {
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.Log("AudioSourceが設定されていません");
+        }
+    }
+
 }
