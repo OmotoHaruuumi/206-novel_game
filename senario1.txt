@@ -1,12 +1,12 @@
 #scene=001
-#bgm=bgm1
+#bgm=転校
 #background=normal_school
 #bokeflag=false
 #speaker=先生
 #chara=teacher1
 {笑いの本場から引っ越してきた小諸　過（おもろ　すぎる）くんです}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {(こんどこそ人気者になるぞ・・・！)}
 #bokeflag=true
 #options={
@@ -15,10 +15,6 @@
 {転校で、、人生好転！,005}
 }
 {はじめまして！大阪から来ました小諸過です！}
-#bokeflag= false
-{(今ボケるのは危険か...)}
-{無難な回答}
-{(ここはまだ"見"だ...これでいい)}
 #next=006 
 
 #scene=003
@@ -29,7 +25,7 @@
 {小諸君}
 {良かったらこのリコーダー舐めて}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {一言でカーストを制してしまった...}
 #score=381
 #next=006
@@ -49,7 +45,7 @@
 #chara=bokutou
 {(転校生君一つ貸しやで)}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 #score=202
 #next=006
 
@@ -62,13 +58,13 @@
 #chara=teacher1
 {えースギルくんだが家庭の事情で転校することになったそうだ。最後に一言頼む}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {今来たばっかだよ!!}
 #score=-200
 #next=006
 
 #scene=006
-#bokeflag= true
+#bokeflag=true
 #options={
 {ポジションは親不孝です,007}
 {ポジションはピッチャーで最高は130キロです。いや体重ちゃうわ,008}
@@ -91,7 +87,7 @@
 #chara=classmates1
 {ハッハッハ}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {(なかなか悪くない手ごたえだ!)}
 #score=245
 #next=010
@@ -108,25 +104,24 @@
 {ピンポンパンポーン}
 {ただいまの発言、おもろすぎます。以上放送委員でした}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 #score=418
 #next=010
 
 #scene=009
 {女のストライクゾーン激狭です}
-#speaker=生徒
 #speaker=先生
 #chara=teacher1
 {...}
 {(ガシッガシッ)}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {痛い...え?なんで蹴るの}
 #speaker=生徒
 #chara=classmates1
 {(ガシッガシッ)}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {つまらないってそんな罪かなぁ？}
 #score=-121
 #next=010
@@ -153,7 +148,7 @@
 #chara=classmates1
 {ドッ！}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 #score=201
 #next=014
 
@@ -165,7 +160,7 @@
 #chara=classmates1
 {(...)}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {(たすけて！しんちゃん！ボボボボボ)}
 #score=112
 #next=014
@@ -179,7 +174,7 @@
 #chara=classmateA
 {いや、ジャック・プリスコ戦かよ！渋いなおいおい！}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 {？}
 #score=-100
 #next=014
@@ -205,7 +200,7 @@
 #bgm=bad
 {どういう意味かな}
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 #background=dark_school
 #se=shock
 {(タイミング間違えた！し、しまった～！！)}
@@ -215,8 +210,8 @@
 
 #scene=016
 #speaker=小諸
-#chara=sugiru1
+#chara=null
 #bokeflag=false
-{(ここはまだ"見"だ...これでいい)}
+{何とか自己紹介は切り抜けた}
 #result
 
