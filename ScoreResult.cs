@@ -8,12 +8,14 @@ using System.Linq;
 public class ScoreResult : MonoBehaviour
 {
     public Text ResultText;
+    [SerializeField]
+    public GameObject nextbutton;
     private float animationduration = 3.0f;   //アニメーションの実行時間
 
     // Start is called before the first frame update
     public void Start()
     {
-       this. ResultText = this.GetComponent<Text>();
+        this. ResultText = this.GetComponent<Text>();
         this.ResultText.text = "0";                       //最初は０に設定
     }
 

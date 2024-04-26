@@ -11,7 +11,7 @@ public class SEManager : MonoBehaviour
     [SerializeField]
     private AudioClip[] audioclips; //音源のリスト
 
-    private string[] AudioClipname = new string[] {"laugh","shock","click","bokeru"}; //音源の変数名が入ったリスト
+    private string[] AudioClipname = new string[] {"laugh","shock","click","bokeru","bomb"}; //音源の変数名が入ったリスト
 
     Dictionary<string, AudioClip> audioClipDictionary;  //SEのキーと音源を対応させた辞書型配列
 

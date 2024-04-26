@@ -48,8 +48,18 @@ public class SceneController
 
     GameObject clickedObject;
 
+    //コルーチン中か
+    public bool isCoroutine = false;
+
     //いまボケれる状態か
     public bool canBoke;
+
+    //強制ボケか
+    public bool isForce = false;
+
+    //panel
+    public GameObject mainpanel;
+    public GameObject speakerpanel;
 
     //ボケるボタンを押したときに表示される選択肢を保持するリスト
     List<(string,string)> nextoptions = new List<(string, string)>();
@@ -72,6 +82,9 @@ public class SceneController
         textSeq.Complete();
         // スコアの初期化
         score = 0;
+        //パネルの取得
+        mainpanel = gui.mainTextPanel;
+        speakerpanel = gui.nameTextPanel;
     }
 
 
@@ -118,7 +131,14 @@ public class SceneController
 
     public void BokeruButtonClick()
     {
-        ShowOptions(nextoptions);
+        if(isCoroutine)
+        {
+            return;
+        }
+        else
+        {
+            ShowOptions(nextoptions);
+        }
     }
 
 
@@ -127,10 +147,11 @@ public class SceneController
     {
         // 選択肢パネルの表示/非表示
         gui.ButtonPanel.gameObject.SetActive(isOptionsShowed);
+
         // 次のページアイコンの表示/非表示
         gui.nextPageIcon.SetActive((!textSeq.IsActive() || !textSeq.IsPlaying()) && !isOptionsShowed);
         //ボケるボタンの管理
-        gui.BokeruButton.SetActive((!textSeq.IsActive() || !textSeq.IsPlaying()) && !isOptionsShowed && canBoke);
+        gui.BokeruButton.SetActive(((!textSeq.IsActive() || !textSeq.IsPlaying()) && !isOptionsShowed && canBoke) || isCoroutine);
         gui.FakeButton.SetActive((!(!textSeq.IsActive() || !textSeq.IsPlaying()) && !isOptionsShowed && canBoke));
     }
 
@@ -165,16 +186,27 @@ public class SceneController
     public void SetmainText(string maintext)
     {
         tempText = maintext;
+        Text text = mainpanel.GetComponentInChildren<Text>();
+
+        if(maintext=="null")
+        {
+            mainpanel.SetActive(false);
+        }
+        else
+        {
+            mainpanel.SetActive(true);
+        }
+
         if (textSeq.IsActive() && textSeq.IsPlaying())
         {
             textSeq.Complete();
         }
         else
         {
-            gui.mainText.text = "";
+            text.text = "";
             textSeq = DOTween.Sequence();
             textSeq.Append
-                (gui.mainText.DOText
+                (text.DOText
                 (
                     maintext,
                     maintext.Length * captionSpeed
@@ -183,13 +215,19 @@ public class SceneController
     }
 
     // スピーカーの設定
-    public void SetSpeaker(string name = "")
+    public void SetSpeaker(string name)
     {
-        if (name=="null")
+        Text text = speakerpanel.GetComponentInChildren<Text>(); ;
+        if (name == "null")
         {
-            gui.nameText.text = null;
+            speakerpanel.SetActive(false);
         }
-        gui.nameText.text = name;
+        else
+        {
+            text.text = name;
+            speakerpanel.SetActive(true);
+        }
+        
     }
 
     // 選択肢の設定
@@ -201,9 +239,48 @@ public class SceneController
     //ボケるボタンが押された時の選択肢の表示
     public void ShowOptions(List<(string text, string nextScene)> options)
     {
-        isOptionsShowed = true;
-        canBoke = false;
+        if(isForce)
+        {
+            isOptionsShowed = true;
+            cm.CharacterImageChange("null");
+            SetmainText("null");
+            SetSpeaker("null");
+            bgm.BGMChange("heart");
+            createoption(options);
+            isForce = false;
+        }
+        else if (options[0].Item1 == "stay")
+        {
+            isOptionsShowed = false;
+            SetBokeflag("false");
+            SetSpeaker("スギル");
+            SetChara("null");
+            SetmainText("流石に今はボケようが無いか");
+        }
+        else
+        {
+            isCoroutine = true;
+            isOptionsShowed = true;
+            cm.CharacterImageChange("null");
+            SetmainText("null");
+            SetSpeaker("null");
+            CoroutineManager.Instance.StartCoroutine(StartBoke(options));
+        }
+    }
+
+    private IEnumerator StartBoke(List<(string text, string nextScene)> options)
+    {
+        Debug.Log("wait");
         bgm.BGMChange("heart");
+        yield return new WaitForSeconds(2.0f); // delay秒待つ
+        gui.PushedButton.SetActive(false);
+        createoption(options);
+    }
+
+    public void createoption(List<(string text, string nextScene)> options)
+    {
+        isCoroutine = false;
+        canBoke = false;
         foreach (var o in options)
         {
             // 選択肢ボタンの生成と設定
@@ -215,7 +292,7 @@ public class SceneController
             b.transform.SetParent(gui.ButtonPanel, false);
         }
     }
-    
+
 
 
     // 選択肢がクリックされた時の処理
@@ -277,6 +354,19 @@ public class SceneController
     public void Result()
     {
         SceneManager.LoadScene("RESULT");
+    }
+
+    public void Force1()
+    {
+        se.PlaySE("bokeru");
+        gui.PushedButton.SetActive(true);
+        BokeruButtonClick();
+    }
+
+    public void Force2()
+    {
+        isForce = true;
+        BokeruButtonClick();
     }
 
     // スコアの取得

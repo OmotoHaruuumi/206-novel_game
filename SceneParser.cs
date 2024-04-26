@@ -17,6 +17,8 @@ public class SceneParser
     private const string COMMAND_CHARA = "chara=";
     private const string SEPARATE_MAIN_START = "{";
     private const string SEPARATE_MAIN_END = "}";
+    private const string SECTION_FORCE1 = "force1";
+    private const string SECTION_FORCE2 = "force2";
     private const string SECTION_RESULT = "result";
 
 
@@ -41,7 +43,9 @@ public class SceneParser
                 if (line.Contains(COMMAND_SPEAKER))
                 {
                     line = line.Replace(COMMAND_SPEAKER,""); //speakerÇ∆Ç¢Ç§ï∂éöóÒÇçÌèú
-                        sc.SetSpeaker(line);
+                    line = line.Replace(COMMAND_SE, "");
+                    line = line.Replace("\n", "").Replace("\r", "");
+                    sc.SetSpeaker(line);
                 }
                 else if (line.Contains(COMMAND_OPTION))
                 {
@@ -97,7 +101,6 @@ public class SceneParser
                 {
                     line = line.Replace(COMMAND_CHARA, "");
                     line = line.Replace("\n", "").Replace("\r", "");
-                    Debug.Log(line);
                     sc.SetChara(line);
                 }
                 else if (line.Contains(COMMAND_SCORE))
@@ -111,8 +114,16 @@ public class SceneParser
                 {
                     sc.Result();
                 }
+                else if (line.Contains(SECTION_FORCE1))
+                {
+                    sc.Force1();
+                }
+                else if (line.Contains(SECTION_FORCE2))
+                {
+                    sc.Force2();
+                }
 
-                    s.GoNextLine();
+                s.GoNextLine();
                 if (s.IsFinished()) break;
                 line = s.GetCurrentLine();
             }
@@ -140,6 +151,7 @@ public class SceneParser
                 line = s.GetCurrentLine();
             }
             Debug.Log(text);
+            text = line.Replace("\n", "").Replace("\r", "");
             if (!string.IsNullOrEmpty(text)) sc.SetmainText(text);
         }
 

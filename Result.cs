@@ -12,11 +12,18 @@ public class Result : MonoBehaviour
 
     private ScoreResult scoreresult;
 
+    [SerializeField]
+    private GameObject nextpanel;
+    [SerializeField]
+    private GameObject dopanel;
+
     private AudioSource audioSource = null;
 
     [SerializeField]
     public AudioClip resultSE,Click;
 
+    //ドリトライモードかどうか
+    public static bool doretry;
 
     // Start is called before the first frame update
     void Start()
@@ -30,20 +37,36 @@ public class Result : MonoBehaviour
         PlaySE(resultSE);
     }
 
+    //Nextがクリックされた時の動作
+    public void Next()
+    {
+        PlaySE(Click);
+        nextpanel.SetActive(true);
+    }
 
     //リスタートがクリックされた時の動作
     public void ReStart()
     {
-        StartCoroutine(ReStartWithDelay("SampleScene"));
+        doretry = false;
+        StartCoroutine(ReStartWithDelay("SampleScene",scenechangedelay));
+    }
+
+    //ドリトライがクリックされた時の動作
+    public void DoReStart()
+    {
+        doretry = true;
+        dopanel.SetActive(true);
+        StartCoroutine(ReStartWithDelay("SampleScene",2.0f));
     }
 
     //タイトルに戻るがクリックされた時の動作
     public void BackTitle()
     {
-        StartCoroutine(ReStartWithDelay("Title"));
+        doretry = false;
+        StartCoroutine(ReStartWithDelay("Title",scenechangedelay));
     }
 
-    private IEnumerator ReStartWithDelay(string changescene)
+    private IEnumerator ReStartWithDelay(string changescene,float scenechangedelay)
     {
         PlaySE(Click);
         yield return new WaitForSeconds(scenechangedelay); // delay秒待つ

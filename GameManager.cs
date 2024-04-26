@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         if (senario == null)
         {
-            senario = "senario2";
+            senario = "senario4";
         }
         sc.LoadSenario(senario);
         sc.SetScene("001");

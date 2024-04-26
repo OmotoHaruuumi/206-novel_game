@@ -12,7 +12,7 @@ public class BGManager : MonoBehaviour
     public Image bgImage;
 
     [SerializeField]
-    Sprite school1, school2,amusement;
+    Sprite school1, school2,amusement,popcorn,mery,dangerous,meetingroom,office,hunter,airport,garage,funeral;
 
     void Start()
     {
@@ -25,6 +25,7 @@ public class BGManager : MonoBehaviour
         if (image_name == "normal_school")
         {
             bgImage.sprite = school1;
+            bgImage.color = new Color32(255, 255, 255, 255);
         }
         else if (image_name == "dark_school")
         {
@@ -34,11 +35,56 @@ public class BGManager : MonoBehaviour
         else if (image_name == "amusement")
         {
             bgImage.sprite = amusement;
+            bgImage.color = new Color32(255, 255, 255, 255);
         }
         else if (image_name == "dark_amusement")
         {
             bgImage.sprite = amusement;
             bgImage.color = new Color32(206, 0, 0, 255);
+        }
+        else if (image_name == "popcorn")
+        {
+            bgImage.sprite = popcorn;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "mery")
+        {
+            bgImage.sprite = mery;
+        }
+        else if (image_name == "dangerous")
+        {
+            bgImage.sprite = dangerous;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "office")
+        {
+            bgImage.sprite = office;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "meetingroom")
+        {
+            bgImage.sprite = meetingroom;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "hunter")
+        {
+            bgImage.sprite = hunter;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "ãÛç`")
+        {
+            bgImage.sprite = airport;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "garage")
+        {
+            bgImage.sprite = garage;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "ëíéÆèÍ")
+        {
+            bgImage.sprite = funeral;
+            bgImage.color = new Color32(255, 255, 255, 255);
         }
         else
         {

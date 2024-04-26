@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class GUIManager : MonoBehaviour
 {
     [SerializeField]
-    public Text mainText;
+    public GameObject mainTextPanel;
     [SerializeField]
-    public Text nameText;
+    public GameObject nameTextPanel;
     [SerializeField]
     public GameObject nextPageIcon; //文字が表示し終わった事を表すアイコン
     [SerializeField]
@@ -19,6 +19,8 @@ public class GUIManager : MonoBehaviour
     public GameObject BokeruButton;
     [SerializeField]
     public GameObject FakeButton;
+    [SerializeField]
+    public GameObject PushedButton;
     [SerializeField]
     public Font normalFont;  //使用するフォント
 

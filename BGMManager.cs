@@ -6,7 +6,7 @@ public class BGMManager : MonoBehaviour
 {
     AudioSource audiosource; //スピーカー
 
-    public AudioClip bgm1,bgm2,bgm3,bgm4,bad,heart;
+    public AudioClip transfer,mensetu,amusement,parade,gas,funeral,bad,heart,last;
     
     // Start is called before the first frame update
     void Start()
@@ -22,28 +22,38 @@ public class BGMManager : MonoBehaviour
         {
             audiosource.clip = null;
         }
-        else if(BGMName == "bgm1")
+        else if(BGMName == "転校")
         {
             if(audiosource==null)
             {
                 Debug.Log("null");
             }
-            audiosource.clip = bgm1;
+            audiosource.clip = transfer;
             audiosource.Play();
         }
-        else if (BGMName == "bgm2")
+        else if (BGMName == "遊園地")
         {
-            audiosource.clip = bgm2;
+            audiosource.clip = amusement;
             audiosource.Play();
         }
-        else if (BGMName == "bgm3")
+        else if (BGMName == "パレード")
         {
-            audiosource.clip = bgm3;
+            audiosource.clip = parade;
             audiosource.Play();
         }
-        else if (BGMName == "bgm4")
+        else if (BGMName == "面接")
         {
-            audiosource.clip = bgm4;
+            audiosource.clip = mensetu;
+            audiosource.Play();
+        }
+        else if (BGMName == "毒ガス")
+        {
+            audiosource.clip = gas;
+            audiosource.Play();
+        }
+        else if (BGMName == "葬式")
+        {
+            audiosource.clip = funeral;
             audiosource.Play();
         }
         else if (BGMName == "bad")
@@ -54,6 +64,11 @@ public class BGMManager : MonoBehaviour
         else if (BGMName == "heart")
         {
             audiosource.clip = heart;
+            audiosource.Play();
+        }
+        else if (BGMName == "last")
+        {
+            audiosource.clip = last;
             audiosource.Play();
         }
 
