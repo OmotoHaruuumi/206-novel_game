@@ -8,28 +8,28 @@ public class CharacterManager : MonoBehaviour
     public Image charaImage;
 
     [SerializeField]
-    Sprite sugiru,free,teacher,classmateA,classmateB,classmateC,classmates,bokutou,dobokutou,mbokutou,dombokutou,raidou,doraidou,mraidou,kawai,mkawai,dokawai,MC,mascot,siranaiA,worker,sinja,staff,syukatu,mensetukanA,mensetukanB,mensetukanC,foreigner,izou,madam1,madam2,gafa,rayquaza,shen,relative;
+    Sprite sugiru,free,teacher,classmateA,classmateB,classmateC,classmates,bokutou,dobokutou,mbokutou,dombokutou,raidou,doraidou,mraidou,rraidou,kawai,mkawai,dokawai,MC,mascot,siranaiA,worker,popcorn,sinja,staff,syukatu,mensetukanA,mensetukanB,mensetukanC,foreigner,izou,madam1,madam2,gafa,gafa2,rayquaza,shen,relative;
     void Start()
     {
        
     }
 
-    // ÉXÉPÅ[ÉãÇê›íËÇ∑ÇÈä÷êî
+    // „Çπ„Ç±„Éº„É´„ÇíË®≠ÂÆö„Åô„ÇãÈñ¢Êï∞
     public void SetScale(Vector2 scale)
     {
-        // ImageÇÃRectTransformÉRÉìÉ|Å[ÉlÉìÉgÇéÊìæ
+        // Image„ÅÆRectTransform„Ç≥„É≥„Éù„Éº„Éç„É≥„Éà„ÇíÂèñÂæó
         RectTransform rectTransform = charaImage.GetComponent<RectTransform>();
 
-        // ÉXÉPÅ[ÉãÇê›íË
+        // „Çπ„Ç±„Éº„É´„ÇíË®≠ÂÆö
         rectTransform.localScale = scale;
     }
 
     public void SetPosition(Vector2 position)
     {
-        // ImageÇÃRectTransformÉRÉìÉ|Å[ÉlÉìÉgÇéÊìæ
+        // Image„ÅÆRectTransform„Ç≥„É≥„Éù„Éº„Éç„É≥„Éà„ÇíÂèñÂæó
         RectTransform rectTransform = charaImage.GetComponent<RectTransform>();
 
-        // à íuÇê›íË
+        // ‰ΩçÁΩÆ„ÇíË®≠ÂÆö
         rectTransform.anchoredPosition = position;
     }
 
@@ -47,25 +47,23 @@ public class CharacterManager : MonoBehaviour
             charaImage.color = new Color32(255, 255, 255, 255); ;
         }
 
-        if (image_name == "sugiru1" || image_name == "free")
-        {
-            SetPosition(new Vector2(0,0));
-        }
-        else
-        {
-            SetPosition(new Vector2(650,0));
-        }
+       
+        
+         SetPosition(new Vector2(650,0));
+      
 
 
         if (image_name == "sugiru1")
         {
                 charaImage.sprite = sugiru;
-                SetScale(new Vector2(10f, 8f));
+            SetPosition(new Vector2(0, 0));
+            SetScale(new Vector2(10f, 8f));
         }
         else if (image_name == "free")
         {
             charaImage.sprite = free;
-            SetScale(new Vector2(10f, 8f));
+            SetPosition(new Vector2(-50, -300));
+            SetScale(new Vector2(20f, 20f));
         }
         else if (image_name == "teacher1")
         {
@@ -97,29 +95,36 @@ public class CharacterManager : MonoBehaviour
                 if (Result.doretry)
                 {
                     charaImage.sprite = dobokutou;
-                    SetScale(new Vector2(10f, 8f));
+                    SetScale(new Vector2(12f, 9.6f));
+                    SetPosition(new Vector2(550, -250));
                 }
                 else
                 {
+                    SetPosition(new Vector2(-650, -400));
                     charaImage.sprite = bokutou;
-                    SetScale(new Vector2(10f, 8f));
+                    SetScale(new Vector2(20f, 16f));
                 }
         }
         else if (image_name == "mbokutou")
         {
             if(TitleManager.senario=="senario3")
             {
-                SetPosition(new Vector2(-650, 0));
+                SetPosition(new Vector2(-650, -400));
+            }
+            else if(TitleManager.senario=="senario4")
+            {
+                SetPosition(new Vector2(650, -400));
             }
             if (Result.doretry)
             {
                 charaImage.sprite = dombokutou;
-                SetScale(new Vector2(10f, 8f));
+                SetScale(new Vector2(12f, 9.6f));
+                SetPosition(new Vector2(550, -250));
             }
             else
             {
                 charaImage.sprite = mbokutou;
-                SetScale(new Vector2(10f, 8f));
+                SetScale(new Vector2(20f, 16f));
             }
         }
         else if (image_name == "raidou")
@@ -127,12 +132,14 @@ public class CharacterManager : MonoBehaviour
             if (Result.doretry)
             {
                 charaImage.sprite = doraidou;
-                SetScale(new Vector2(10f, 8f));
+                SetScale(new Vector2(12f, 9.6f));
+                SetPosition(new Vector2(550, -250));
             }
             else
             {
                charaImage.sprite = raidou;
-                SetScale(new Vector2(10f, 8f));
+                SetScale(new Vector2(20f, 16f));
+                SetPosition(new Vector2(650, -400));
             }
         }
         else if (image_name == "kawai")
@@ -140,23 +147,32 @@ public class CharacterManager : MonoBehaviour
             if (Result.doretry)
             {
                 charaImage.sprite = dokawai;
-                SetScale(new Vector2(10f, 8f));
+                SetScale(new Vector2(12f, 9.6f));
+                SetPosition(new Vector2(550, -250));
             }
             else
             {
                 charaImage.sprite = kawai;
-                SetScale(new Vector2(10f, 8f));
+                SetScale(new Vector2(15f, 12f));
+                SetPosition(new Vector2(650, -400));
             }
         }
         else if (image_name == "mkawai")
         {
             charaImage.sprite = mkawai;
-            SetScale(new Vector2(10f, 8f));
+            SetScale(new Vector2(15f, 12f));
+            SetPosition(new Vector2(650, -400));
         }
         else if (image_name == "mraidou")
         {
             charaImage.sprite = mraidou;
-            SetScale(new Vector2(10f, 8f));
+            SetScale(new Vector2(15f, 10f));
+        }
+        else if (image_name == "rraidou")
+        {
+            charaImage.sprite = rraidou;
+            SetScale(new Vector2(9.9f, 6.6f));
+            SetPosition(new Vector2(650,-30));
         }
         else if (image_name == "siranaiA")
         {
@@ -177,6 +193,12 @@ public class CharacterManager : MonoBehaviour
         {
             charaImage.sprite = worker;
             SetScale(new Vector2(9f, 7f));
+        }
+        else if (image_name == "popcorn")
+        {
+            charaImage.sprite = popcorn;
+            SetPosition(new Vector2(0, 0));
+            SetScale(new Vector2(10f, 8f));
         }
         else if (image_name == "sinja")
         {
@@ -212,7 +234,8 @@ public class CharacterManager : MonoBehaviour
         else if (image_name == "foreigner")
         {
             charaImage.sprite = foreigner;
-            SetScale(new Vector2(13f, 8f));
+            SetPosition(new Vector2(650, -150));
+            SetScale(new Vector2(15f, 15f));
         }
         else if (image_name == "madam1")
         {
@@ -232,6 +255,13 @@ public class CharacterManager : MonoBehaviour
         else if (image_name == "gafa")
         {
             charaImage.sprite = gafa;
+            SetScale(new Vector2(13f, 8f));
+            SetPosition(new Vector2(200,0));
+        }
+        else if (image_name == "gafa2")
+        {
+            charaImage.sprite = gafa2;
+            SetPosition(new Vector2(200,80));
             SetScale(new Vector2(13f, 8f));
         }
         else if (image_name == "rayquaza")
