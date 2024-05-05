@@ -62,6 +62,9 @@ public class SceneController
     public GameObject mainpanel;
     public GameObject speakerpanel;
 
+    //エンドロールに流すBGMを指定する
+    public static string endbgm;
+
     //ボケるボタンを押したときに表示される選択肢を保持するリスト
     List<(string,string)> nextoptions = new List<(string, string)>();
 
@@ -121,7 +124,6 @@ public class SceneController
                     if(clickedObject == gui.BokeruButton)
                     {
                         BokeruButtonClick();
-                        se.PlaySE("bokeru");
                     }
                 }
 
@@ -252,6 +254,7 @@ public class SceneController
         }
         else if (options[0].Item1 == "stay")
         {
+            se.PlaySE("bokeru");
             isOptionsShowed = false;
             SetBokeflag("false");
             SetSpeaker("スギル");
@@ -265,6 +268,7 @@ public class SceneController
                 cm.CharacterImageChange("null");
                 isCoroutine = true;
             }
+            se.PlaySE("bokeru");
             isOptionsShowed = true;
             SetmainText("null");
             SetSpeaker("null");
@@ -362,10 +366,23 @@ public class SceneController
         SceneManager.LoadScene("RESULT");
     }
 
+
+    // ステージ選択画面への遷移
+    public void Stage()
+    {
+        SceneManager.LoadScene("StageChoice");
+    }
+
+    //エンドロールに移行
+    public void End(string bgmname)
+    {
+        endbgm = bgmname;
+        SceneManager.LoadScene("END");
+    }
+
     public void Force1()
     {
         isForce1 = true;
-        se.PlaySE("bokeru");
         BokeruButtonClick();
     }
 

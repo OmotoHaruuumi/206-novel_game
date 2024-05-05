@@ -12,7 +12,7 @@ public class BGManager : MonoBehaviour
     public Image bgImage;
 
     [SerializeField]
-    Sprite school1, school2, amusement, popcorn, mery, dangerous, meetingroom, office, hunter, airport, garage, funeral, kaiji, M1, suka, raou;
+    Sprite school1, school2, amusement, popcorn, mery, dangerous, meetingroom, office, hunter, airport, garage, funeral, kaiji, M1, suka, raou,room,road;
 
     void Start()
     {
@@ -104,6 +104,16 @@ public class BGManager : MonoBehaviour
         else if (image_name == "dead")
         {
             bgImage.sprite = raou;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "room")
+        {
+            bgImage.sprite = room;
+            bgImage.color = new Color32(255, 255, 255, 255);
+        }
+        else if (image_name == "road")
+        {
+            bgImage.sprite = road;
             bgImage.color = new Color32(255, 255, 255, 255);
         }
         else

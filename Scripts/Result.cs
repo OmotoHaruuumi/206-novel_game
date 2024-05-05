@@ -28,6 +28,7 @@ public class Result : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("result start");
         scoreresult = GameObject.FindObjectOfType<ScoreResult>();
         if (scoreresult == null)
             Debug.Log("None");
@@ -44,11 +45,17 @@ public class Result : MonoBehaviour
         }
     }
 
-    //Nextがクリックされた時の動作
-    public void Next()
+    void Update()
     {
-        PlaySE(Click);
-        nextpanel.SetActive(true);
+        if(scoreresult.finished)
+        {
+            nextpanel.SetActive(true);
+            scoreresult.finished = false;
+        }
+        else
+        {
+            return;
+        }
     }
 
     //リスタートがクリックされた時の動作

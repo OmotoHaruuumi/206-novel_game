@@ -27,12 +27,17 @@
 #speaker=null
 #chara=null
 {ケセガンガンガンガンガンガンガンガン♪}
+#background=M1
 #speaker=スギル
 #chara=null
 {よし!}
 {失礼いたします。爆笑院大学の小諸過です。よろしくお願いいたします。}
 {(ハッ)}
+#speaker=null
+{null}
+#speaker=スギル
 {(面接官が完全にM1の審査員席と一致)}
+#background=meetingroom
 #speaker=木刀佑
 #chara=mbokutou
 {(もしかして…)}           
@@ -293,8 +298,15 @@
 #speaker=木刀佑
 #chara=mbokutou
 {無言で...}
-{無言で落ちたっ...！}
+#speaker=null
+#chara=null
+#background=kaiji
+{null}
+#background=meetingroom
+#speaker=木刀佑
+#chara=mbokutou
 {あの怖がり屋...臆病者のスギルが最後の最後...オレのため...}
+#score=-1000
 #result
 
 #scene=018
@@ -335,6 +347,11 @@
 {よし脱出成功だ!!}
 {やったな木刀y…}
 {し、死んでる...}
+#speaker=null
+#chara=null
+#background=dead
+#bgm=stop
+{null}
 #result
 
 #scene=020
@@ -345,6 +362,11 @@
 {よし脱出成功だ!!}
 {頑張ってみるもんだな木刀y}
 {し、死んでる...}
+#speaker=null
+#chara=null
+#background=dead
+#bgm=stop
+{null}
 #result
 
 #scene=021
@@ -368,6 +390,11 @@
 #chara=null
 {よし!そろそろ脱s}
 {し、死んでる…}
+#bgm=stop
+#speaker=null
+#chara=null
+#background=dead
+{null}
 #result
 
 #scene=022

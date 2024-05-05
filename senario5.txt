@@ -79,6 +79,6 @@
 #speaker=スギル
 #chara=sugiru1
 {ところがどっこいごっつぁんどすこいそうはいかん丸！}
-#result
+#end=normal
 
 

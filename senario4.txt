@@ -39,6 +39,8 @@
 #speaker=ターバン
 #chara=foreigner
 {ここはうちの宗派に合わせてモライマスヨ!}
+#speaker=ターバン
+#chara=foreigner
 {(カレー鍋を抱えて踊る)}
 #speaker=木刀佑
 #chara=mbokutou
@@ -63,6 +65,12 @@
 #speaker=スギル
 #chara=null
 {大田区って死体何曜日だっけ？}
+#speaker=河合
+#chara=mkawai
+{し、た、いってことは金曜日か}
+#speaker=木刀祐
+#chara=mbokutou
+{どういうことだよおー？}
 #next=006
 
 #scene=003
@@ -130,6 +138,7 @@
 #chara=gafa
 {ハハッ墓地にはそんな低レベルモンスター一体でどうするつもりなんだ?}
 {ん...なんだこれ?}
+#chara=gafa2
 #force1
 
 #scene=007
@@ -239,10 +248,17 @@
 #speaker=木刀佑
 #chara=mbokutou
 {さあ、どうでしょうか全員押してください}
+#background=suka
+#speaker=null
+#chara=null
+{null}
+#speaker=木刀佑
+#chara=mbokutou
 {全員スカッと}
 #next=011
 
 #scene=011
+#background=葬式場
 #bokeflag=false
 #speaker=河合
 #chara=mkawai
@@ -388,13 +404,13 @@
 {偉そうにうんちくを語っていた木刀佑でさえも、}
 {霊柩車を呼んでいないのである!!!}
 #speaker=雷同ちゃん
-#chara=mraidou
+#chara=rraidou
 {どうしてー！！！霊柩車は一体何をしてるの！！！}
 #speaker=ナレーション
 #chara=null
 {こう、泣きながら叫んでいる雷同ちゃんでさえ！！}
 #speaker=雷同ちゃん
-#chara=mraidou
+#chara=rraidou
 {はやくきてー！！！お願いー！！！}
 #speaker=ナレーション
 #chara=null
@@ -526,7 +542,7 @@
 #speaker=スギル
 #chara=null
 {え！？まだなにも...}
-#result
+#end=shen
 
 #scene=031
 #bokeflag=false

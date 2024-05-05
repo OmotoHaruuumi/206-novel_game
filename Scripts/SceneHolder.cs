@@ -9,6 +9,7 @@ public class SceneHolder
     Dictionary<string, string> Senarios = new Dictionary<string, string>();
 
     //テキストファイルのパス
+    private string pass0 = "Texts/Senariot";
     private string pass1 = "Texts/Senario1";
     private string pass2 = "Texts/Senario2";
     private string pass3 = "Texts/Senario3";
@@ -26,6 +27,7 @@ public class SceneHolder
     public SceneHolder(SceneController sc)
     {
         this.sc = sc;
+        Senarios["senariot"] = pass0;
         Senarios["senario1"] = pass1;
         Senarios["senario2"] = pass2;
         Senarios["senario3"] = pass3;

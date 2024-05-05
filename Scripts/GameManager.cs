@@ -7,12 +7,22 @@ public class GameManager : MonoBehaviour
 {
     public SceneController sc;
     private string senario;
+    private bool debug=false; //デバッグの時だけtrueにする
 
     // Start is called before the first frame update
     void Start()
     {
         sc = new SceneController(this);
-        senario = TitleManager.senario;
+        //チューとリアルをするかどうか判定する
+        if(!tutorial.hadtutorial)
+        {
+            tutorial.hadtutorial = true;
+            senario = "senariot";
+        }
+        else
+        {
+            senario = TitleManager.senario;
+        }
         SetFirstScene(senario);
        
     }
@@ -26,9 +36,9 @@ public class GameManager : MonoBehaviour
 
     void SetFirstScene(string senario)
     {
-        if (senario == null)
+        if (senario == null || debug)
         {
-            senario = "senario3";
+            senario = "senario4";
         }
         sc.LoadSenario(senario);
         sc.SetScene("001");

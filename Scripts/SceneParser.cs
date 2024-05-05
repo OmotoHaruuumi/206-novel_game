@@ -20,6 +20,8 @@ public class SceneParser
     private const string SECTION_FORCE1 = "force1";
     private const string SECTION_FORCE2 = "force2";
     private const string SECTION_RESULT = "result";
+    private const string SECTION_STAGE = "stage";
+    private const string SECTION_END = "end=";
 
 
     public SceneParser(SceneController sc)
@@ -113,6 +115,17 @@ public class SceneParser
                 else if (line.Contains(SECTION_RESULT))
                 {
                     sc.Result();
+                }
+                else if (line.Contains(SECTION_STAGE))
+                {
+                    sc.Stage();
+                }
+                else if (line.Contains(SECTION_END))
+                {
+                    line = line.Replace(SECTION_END, "");
+                    line = line.Replace("\n", "").Replace("\r", "");
+                    Debug.Log(line);
+                    sc.End(line);
                 }
                 else if (line.Contains(SECTION_FORCE1))
                 {

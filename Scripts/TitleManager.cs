@@ -7,17 +7,30 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-
+   
     public static string senario;
     private float scenechangedelay = 1f;
     private AudioSource audioSource = null;
 
+    //各ステージをクリアしているか
+    public static bool cleard1;
+    public static bool cleard2;
+    public static bool cleard3;
+    public static bool cleard4;
+
     [SerializeField]
     public AudioClip Click;
+
+    [SerializeField]
+    GameObject button_stage2, button_stage3, button_stage4, button_stage5;
 
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        button_stage2.SetActive(cleard1);
+        button_stage3.SetActive(cleard2);
+        button_stage4.SetActive(cleard3);
+        button_stage5.SetActive(cleard4);
     }
 
     public void Button1()
